@@ -28,8 +28,8 @@ class ListModel {
 }
 
 class ListData {
-  int hsRankRichID;
-  int hsRankRichListID;
+  var hsRankRichID;
+  var hsRankRichListID;
   Null hsRankRichYear;
   Null hsRankRichType;
   String hsRankRichChaCn;
@@ -39,8 +39,8 @@ class ListData {
   String hsRankRichComCn;
   String hsRankRichComEn;
   List<HsRankRichComList> hsRankRichComList;
-  int hsRankRichRanking;
-  int hsRankRichWealth;
+  var hsRankRichRanking;
+  var hsRankRichWealth;
   String hsRankRichMTime;
 
   ListData(
@@ -113,12 +113,12 @@ class ListData {
 }
 
 class HsRankRichChaList {
-  int hsCharacterID;
+  var hsCharacterID;
   String hsCharacterNameCn;
   String hsCharacterNameEn;
   String hsCharacterPhoto;
   String hsCharacterNationality;
-  int hsCharacterGender;
+  var hsCharacterGender;
   String hsCharacterBirthday;
   String hsCharacterBirthPlace;
   String hsCharacterPermanent;
@@ -174,14 +174,14 @@ class HsRankRichChaList {
 }
 
 class HsRankRichComList {
-  int hsCompanyID;
+  var hsCompanyID;
   String hsCompanyNameCn;
   String hsCompanyNameEn;
   String hsCompanyLogo;
   String hsCompanyHeadOffice;
   String hsCompanyDateFounded;
-  int hsCompanyBeListed;
-  int hsCompanyStockMarket;
+  var hsCompanyBeListed;
+  var hsCompanyStockMarket;
   String hsCompanyStockCode;
   String hsCompanyIndustry;
   String hsCompanyMTime;

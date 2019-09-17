@@ -88,15 +88,20 @@ void _getHttp() async {
 //    print(list[1].bxMallSubDto[2].mallSubName);
 //    print(list[2].bxMallSubDto[2].mallSubName);
 
-  DetailsModelEntity detailsModelEntity = DetailsModelEntity.fromJson(val);
-  print(detailsModelEntity.resultData[0].hsRankId);
-  print(detailsModelEntity.resultData[1].hsRankNameCn);
-  print(detailsModelEntity.resultData[0].hsRankExchangerate);
+//  DetailsModelEntity detailsModelEntity = DetailsModelEntity.fromJson(val);
+//  print(detailsModelEntity.resultData[0].hsRankId);
+//  print(detailsModelEntity.resultData[1].hsRankNameCn);
+//  print(detailsModelEntity.resultData[0].hsRankExchangerate);
 
 //  detailsModelEntity.resultData.forEach((item)=>print(item.hsRankNameCn));
 
 //  DetailsListModel detailsListModel = DetailsListModel.fromJson(val);
 //  print(detailsListModel.resultData[0].hsRankReleasedate);
+
+  ListModel listModel = ListModel.fromJson(val);
+  print(listModel.resultData[0].hsRankRichChaEn);
+  print(listModel.resultData[0].hsRankRichChaList[0].hsCharacterBirthPlace);
+  print(listModel.resultData[0].hsRankRichComList[0].hsCompanyNameCn);
   });
 }
 
@@ -107,8 +112,8 @@ Future getHttp() async {
 
 //    print(response.data.toString());
 //    response = await dio.post("http://api.hurun.cn/api/Values/Test");
-//    response = await dio.post("http://api.hurun.cn/api/HsRank/HsRankDetails?id=1");
-    response = await dio.post("http://api.hurun.cn/api/HsRank/HsRankList?tid=1");
+    response = await dio.post("http://api.hurun.cn/api/HsRank/HsRankDetails?id=1");
+//    response = await dio.post("http://api.hurun.cn/api/HsRank/HsRankList?tid=1");
 //    response = await dio.post("http://v.jspang.com:8088/baixing/wxmini/getCategory");
     if (response.statusCode == 200) {
       return response.data;

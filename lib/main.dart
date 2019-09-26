@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dio_test/details_list_entity.dart';
-import 'test_model.dart';
-import 'dart:convert';
 import 'list_model.dart';
-import 'list_details_model.dart';
-import 'category_model.dart';
-import 'details_model_entity.dart';
-import 'entity_factory.dart';
-import 'list_details_model.dart';
+import 'package:flutter_dio_test/provider/page/hs_list_page.dart';
+import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'provider/config/storage_manager.dart';
 
-void main() => runApp(MyApp());
+
+void main() {
+  runApp(
+    MyApp(),
+  );
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -31,7 +32,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text("Dio测试"),
         ),
-        body: DioWidget(),
+        body: HsListPage(1),
       ),
     );
   }
@@ -55,6 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => null;
 }
 
 List list = [];
@@ -98,10 +102,10 @@ void _getHttp() async {
 //  DetailsListModel detailsListModel = DetailsListModel.fromJson(val);
 //  print(detailsListModel.resultData[0].hsRankReleasedate);
 
-  ListModel listModel = ListModel.fromJson(val);
-  print(listModel.resultData[0].hsRankRichChaEn);
-  print(listModel.resultData[0].hsRankRichChaList[0].hsCharacterBirthPlace);
-  print(listModel.resultData[0].hsRankRichComList[0].hsCompanyNameCn);
+    ListModel listModel = ListModel.fromJson(val);
+    print(listModel.resultData[0].hsRankRichChaEn);
+    print(listModel.resultData[0].hsRankRichChaList[0].hsCharacterBirthPlace);
+    print(listModel.resultData[0].hsRankRichComList[0].hsCompanyNameCn);
   });
 }
 
@@ -112,7 +116,8 @@ Future getHttp() async {
 
 //    print(response.data.toString());
 //    response = await dio.post("http://api.hurun.cn/api/Values/Test");
-    response = await dio.post("http://api.hurun.cn/api/HsRank/HsRankDetails?id=1");
+    response =
+        await dio.post("http://api.hurun.cn/api/HsRank/HsRankDetails?id=1");
 //    response = await dio.post("http://api.hurun.cn/api/HsRank/HsRankList?tid=1");
 //    response = await dio.post("http://v.jspang.com:8088/baixing/wxmini/getCategory");
     if (response.statusCode == 200) {
